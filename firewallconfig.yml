@@ -1,0 +1,12 @@
+---
+- name: configuring web service on firewall
+  hosts: webservers
+  become: true
+  tasks:
+    - name: allow web service thru firewall
+      ansible.posix.firewalld:
+        service: http
+        immediate: true
+        permanent: true
+        state: enabled
+
